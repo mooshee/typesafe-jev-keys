@@ -1,4 +1,4 @@
-# TypeSafe Keys
+# TypeSafe Jev Keys
 
 Create and manage [TypeSafe AI](https://typesafe.ai) API keys from your terminal. `typesafe-keys` lists, creates, activates, deactivates, and deletes keys using your signed-in TypeSafe Console session.
 
@@ -33,13 +33,14 @@ Jev powers browser agents ([jev-ultrafast](https://github.com/browser-use/jev-ul
 
 ```bash
 # Clone this repo
-git clone https://github.com/mooshee/typesafe-key-cli.git
+git clone https://github.com/mooshee/typesafe-jev-keys.git
+cd typesafe-jev-keys
 
 # Symlink to your PATH
-ln -sf "$(pwd)/typesafe-keys/typesafe-keys.py" ~/.local/bin/typesafe-keys
+ln -sf "$(pwd)/typesafe-keys.py" ~/.local/bin/typesafe-keys
 
 # Optional: alias as jev-keys
-ln -sf "$(pwd)/typesafe-keys/typesafe-keys.py" ~/.local/bin/jev-keys
+ln -sf "$(pwd)/typesafe-keys.py" ~/.local/bin/jev-keys
 ```
 
 **Requirements:** Python 3.10+ (no pip dependencies — uses only the standard library).
@@ -61,6 +62,22 @@ If you use [agentcookie](https://github.com/nichochar/agentcookie) to access you
 # No manual setup needed — just be signed in to console.typesafe.ai in Chrome
 typesafe-keys list
 ```
+
+---
+
+## Agent skill
+
+This repository includes the `typesafe-jev-keys` skill for agents that need
+help setting up this CLI or inspecting an already-authorized account.
+
+```bash
+npx skills add mooshee/typesafe-jev-keys --skill typesafe-jev-keys -g
+```
+
+The skill treats console cookies and API keys as secrets. It supports setup
+and read-only inspection, and requires a direct request before it guides any
+create, activation, deactivation, or deletion action. Agents should never
+echo, log, or persist a generated key.
 
 ---
 
